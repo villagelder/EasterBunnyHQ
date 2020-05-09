@@ -45,12 +45,9 @@ public class BunnyPositioningSystem {
         Position endPosition = new Position(start.getHeading());
         Iterator it = instructionList.iterator();
 
-        while (it.hasNext()) {
+        while (it.hasNext() && visitedTwice == false) {
             String move = (String) it.next();
             endPosition = walkAndRecord(start, move);
-
-            if (endPosition.getHeading() == 0)
-                return endPosition;
 
             start = endPosition;
 
@@ -146,6 +143,7 @@ public class BunnyPositioningSystem {
             String location = "x" + endPosition.getxCoordinate() + "y" + endPosition.getyCoordinate();
 
             if (locationHistoryList.contains(location)) {
+                visitedTwice = true;
                 return endPosition;
             } else {
                 locationHistoryList.add(location);
