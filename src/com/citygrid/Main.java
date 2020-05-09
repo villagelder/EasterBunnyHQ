@@ -19,7 +19,7 @@ public class Main {
                 Stream.of(sc.nextLine().split("\\s*,\\s*"))
                         .collect(Collectors.toList());
 
-        System.out.println("\nDistance: " + BunnyPositioningSystem.walkAllAndGetDistanceFromHQ(directionsList) + " blocks");
+        System.out.println("\nDistance: " + BunnyPositioningSystem.walkUntilVisitedGetDistanceFromHQ(directionsList) + " blocks");
 
     }
 }
