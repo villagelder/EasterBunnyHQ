@@ -12,11 +12,11 @@ public class BunnyPositioningSystem {
     private static boolean visitedTwice = false;
 
     //distance in grid blocks
-    public static int distanceInBlocks(Position a, Position b) {
+    private static int distanceInBlocks(Position a, Position b) {
         return abs(a.getxCoordinate() - b.getxCoordinate()) + abs(a.getyCoordinate() - b.getyCoordinate());
     }
 
-    public static Position walktoEnd(List<String> instructionList) {
+    private static Position walktoEnd(List<String> instructionList) {
 
         Position start = new Position(1);
 
@@ -38,7 +38,7 @@ public class BunnyPositioningSystem {
     /*
      **Walk all instructions until hit position that has already been visited
      */
-    public static Position walkUntilVisited(List<String> instructionList) {
+    private static Position walkUntilVisited(List<String> instructionList) {
 
         Position start = new Position(1);
 
@@ -69,6 +69,9 @@ public class BunnyPositioningSystem {
         return distanceInBlocks(end, start);
     }
 
+    /*
+     ** Walk instruction list until arrive at Position previously visited and return distance from HQ
+     */
     public static int walkUntilVisitedGetDistanceFromHQ(List<String> instructionList) {
 
         Position start = new Position(1);
@@ -77,7 +80,7 @@ public class BunnyPositioningSystem {
         return distanceInBlocks(end, start);
     }
 
-    public static Position walk(Position start, String move) {
+    private static Position walk(Position start, String move) {
         int newHeading = getNewHeading(start.getHeading(), move.charAt(0));
 
         Position endPosition = new Position(newHeading, start.getxCoordinate(), start.getyCoordinate());
@@ -109,7 +112,7 @@ public class BunnyPositioningSystem {
     /*
      **Used to walk a direction and record each block position visited
      */
-    public static Position walkAndRecord(Position start, String move) {
+    private static Position walkAndRecord(Position start, String move) {
         int newHeading = getNewHeading(start.getHeading(), move.charAt(0));
 
         Position endPosition = new Position(newHeading, start.getxCoordinate(), start.getyCoordinate());
