@@ -8,7 +8,7 @@ import static java.lang.Math.abs;
 
 public class BunnyPositioningSystem {
 
-    private static List<Position> locationHistoryList = new ArrayList<>();
+    private static List<String> locationHistoryList = new ArrayList<>();
     private static boolean visitedTwice = false;
 
     //distance in grid blocks
@@ -36,7 +36,7 @@ public class BunnyPositioningSystem {
     }
 
     /*
-    **Walk all instructions until hit position that has already been visited
+     **Walk all instructions until hit position that has already been visited
      */
     public static Position walkUntilVisited(List<String> instructionList) {
 
@@ -143,11 +143,15 @@ public class BunnyPositioningSystem {
 
             }
 
-            Position pos = endPosition;
-            pos.setHeading(0);
+            String location = "x" + endPosition.getxCoordinate() + "y" + endPosition.getyCoordinate();
 
-            if (locationHistoryList.contains(pos))
-                return pos;
+            if (locationHistoryList.contains(location)) {
+                return endPosition;
+            } else {
+                locationHistoryList.add(location);
+                start = endPosition;
+                i++;
+            }
         }
 
         return endPosition;
